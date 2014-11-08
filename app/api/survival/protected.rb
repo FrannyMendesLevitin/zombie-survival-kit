@@ -1,4 +1,4 @@
-module Acme
+module Survival
   class Protected < Grape::API
     format :json
     http_basic do |username, password|

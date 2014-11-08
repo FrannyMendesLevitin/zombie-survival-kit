@@ -1,4 +1,4 @@
-module Acme
+module Survival
   class Ping < Grape::API
     format :json
     desc 'Returns pong.'

@@ -1,4 +1,4 @@
-module Acme
+module Survival
   class Post < Grape::API
     format :json
     desc 'Creates a spline that can be reticulated.'

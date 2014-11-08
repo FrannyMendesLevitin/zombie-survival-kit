@@ -1,4 +1,4 @@
-module Acme
+module Survival
   class Raise < Grape::API
     desc 'Raises an exception.'
     get :raise do
