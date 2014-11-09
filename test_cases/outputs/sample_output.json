@@ -10,6 +10,7 @@
 	{"name":"knife","weight":15,"value":60},
 	{"name":"spam","weight":50,"value":160},
 	{"name":"water","weight":153,"value":200},
-	{"name":"tuna","weight":13,"value":35}
+	{"name":"tuna","weight":13,"value":35},
+	{"name":"ammo","weight":9,"value":150}
 	]
 }

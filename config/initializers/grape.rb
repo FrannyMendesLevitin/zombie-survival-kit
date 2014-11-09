@@ -34,6 +34,9 @@ module Grape
 		decision_matrix = fill_matrix_with_zeros(items.length+1, max_weight)  
 
 		for i in 0..items.length
+		    if i==0
+		      next
+		    end
 			for j in 1..max_weight
 				array_j = j - 1
 				if (j > items[i-1].weight)
@@ -51,11 +54,11 @@ module Grape
 		end
 
 		w = max_weight
-		i = items.length - 1
+		i = items.length
 		while w>=0 and i<=items.length and i>0 
-			if (decision_matrix[i + 1][w-1]==1)
-				result["selectedItems"] << {"name" => items[i].name, "weight" => items[i].weight, "value" => items[i].value}
-				w -= items[i].weight
+			if (decision_matrix[i][w-1]==1)
+				result["selectedItems"] << {"name" => items[i - 1].name, "weight" => items[i - 1].weight, "value" => items[i - 1].value}
+				w -= items[i - 1].weight
 				i -= 1
 			else
 				i -= 1 
