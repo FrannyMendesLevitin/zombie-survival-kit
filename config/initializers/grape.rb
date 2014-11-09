@@ -15,10 +15,25 @@ module Grape
 	#
 
 	def best_bag max_weight, items
+		result = {"selectedItems" => []}
+
+		# optimize for case where all items can be carried
+		total_weight = 0
+		items.each do |item|
+			total_weight += item.weight
+		end
+		if total_weight <= max_weight
+			items.each do |item|
+				result["selectedItems"] << {"name" => item.name, "weight" => item.weight, "value" => item.value}
+			end
+			return result
+		end
+
+		# Otherwise, do it the long way
 		value_matrix = fill_matrix_with_zeros(items.length+1, max_weight)
 		decision_matrix = fill_matrix_with_zeros(items.length+1, max_weight)  
 
-		for i in 1..items.length
+		for i in 0..items.length
 			for j in 1..max_weight
 				array_j = j - 1
 				if (j > items[i-1].weight)
@@ -37,7 +52,6 @@ module Grape
 
 		w = max_weight
 		i = items.length - 1
-		result = {"selectedItems" => []}
 		while w>=0 and i<=items.length and i>0 
 			if (decision_matrix[i + 1][w-1]==1)
 				result["selectedItems"] << {"name" => items[i].name, "weight" => items[i].weight, "value" => items[i].value}
@@ -55,6 +69,6 @@ module Grape
 			Array.new(cols, 0)
 		end
 	end
-	
+
   end
 end
