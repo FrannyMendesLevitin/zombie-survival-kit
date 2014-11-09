@@ -22,6 +22,7 @@
 			requestBestPack(survivalKit.request);
 		};
 		var requestBestPack = function(availableItems){
+			console.log(availableItems);
 			$http.post('/v1/survival-pack/pack', survivalKit.request).success(function(data){
 				json_data = JSON.parse(data);
 				survivalKit.selectedItems = json_data['selectedItems'];

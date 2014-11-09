@@ -15,11 +15,18 @@ describe Survival::Post do
         expect(response.status).to eq 201
         expect(response.body).to eq File.read('test_cases/outputs/sample_output_big_bag.json').to_json.gsub('\\t', '').gsub('\\n', '')
     end
-    it "POST survival-pack" do	
-		file = File.read('test_cases/inputs/sample_input_no_bag.json')
-		data_hash = JSON.parse(file)
+    it "POST survival-pack" do  
+        file = File.read('test_cases/inputs/sample_input_no_bag.json')
+        data_hash = JSON.parse(file)
         post '/v1/survival-pack/pack', data_hash.to_json, 'Content-Type' => 'application/json'
         expect(response.status).to eq 201
         expect(response.body.gsub(/\s+/, "")).to eq File.read('test_cases/outputs/sample_output_no_bag.json').to_json.gsub('\\t', '').gsub('\\n', '').gsub(/\s+/, "")
+    end
+    it "POST survival-pack" do  
+        file = File.read('test_cases/inputs/sample_input_small_bag.json')
+        data_hash = JSON.parse(file)
+        post '/v1/survival-pack/pack', data_hash.to_json, 'Content-Type' => 'application/json'
+        expect(response.status).to eq 201
+        expect(response.body.gsub(/\s+/, "")).to eq File.read('test_cases/outputs/sample_output_small_bag.json').to_json.gsub('\\t', '').gsub('\\n', '').gsub(/\s+/, "")
     end
 end
