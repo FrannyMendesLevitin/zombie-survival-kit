@@ -21,6 +21,8 @@ Include multiple system test cases to validate your solution (like the one inclu
 Provide instructions in a README for submitting a survival pack to the API and interpretting the results
 Deploy it to Heroku or similar service
 Make your solution available on GitHub or similar service
+
+
 Input:
 
 max weight: 400
@@ -48,6 +50,7 @@ popcorn     7    20
 rabbit     18    12
 beans       4    50
 laptop     30    10
+
 Result:
 
 name    weight value
@@ -63,6 +66,7 @@ spam       50   160
 water     153   200
 tuna       13    35
 ammo        9   150
+
 Hint:
 
 Read this - http://en.wikipedia.org/wiki/Knapsack_problem

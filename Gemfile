@@ -18,3 +18,4 @@ group :development, :test do
   gem 'rubocop', '~> 0.24.1'
 end
 gem 'rename'
+gem 'json'
