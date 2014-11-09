@@ -1,3 +1,52 @@
+Survival-Pack is a service designed to take information regarding which items are available, and returns the items which maximize your chances of surviving a zombie apocolypse. 
+
+There are two ways to use the app. 
+
+The first is via an AngularJS front end, found at [link](link). Simply check the boxes of the items that are available, and a list of the optimal choices will pop up on the left. 
+
+The second option is to directly submit json data to the api endpoint /v1/survival-pack/pack via an HTTP POST request. The api will return json with information regarding the best pack of items.
+
+An example http request (via jquery) might look like this:
+
+	var json = { 
+		"maxWeight": 400,
+
+		"availableItems": [
+			{"name": "ammo", "weight": 9, "value": 150},
+			{"name": "tuna", "weight": 13, "value": 35},
+			{"name": "water", "weight": 153, "value": 200},
+			{"name": "spam", "weight": 50, "value": 160},
+			{"name": "knife", "weight": 15, "value": 60},
+			{"name": "hammer", "weight": 68, "value": 45},
+			{"name": "rope", "weight": 27, "value": 60},
+			{"name": "saw", "weight": 39, "value": 40},
+			{"name": "towel", "weight": 23, "value": 30},
+			{"name": "rock", "weight": 52, "value": 10},
+			{"name": "seed", "weight": 11, "value": 70},
+			{"name": "blanket", "weight": 32, "value": 30},
+			{"name": "skewer", "weight": 24, "value": 15},
+			{"name": "dull-sword", "weight": 48, "value": 10},
+			{"name": "oil", "weight": 73, "value": 40},
+			{"name": "peanuts", "weight": 42, "value": 70},
+			{"name": "almonds", "weight": 43, "value": 75},
+			{"name": "wire", "weight": 22, "value": 80},
+			{"name": "popcorn", "weight": 7, "value": 20},
+			{"name": "rabbit", "weight": 18, "value": 12},
+			{"name": "beans", "weight": 4, "value": 50},
+			{"name": "laptop", "weight": 30, "value": 10}
+			]
+
+		}
+    $.post("http://localhost:3000/v1/survival-pack/pack", JSON.parse(json))
+
+This HTTP request would return json data that looks like this:
+
+    "{"selectedItems":[{"name":"beans","weight":4,"value":50},{"name":"popcorn","weight":7,"value":20},{"name":"wire","weight":22,"value":80},{"name":"almonds","weight":43,"value":75},{"name":"peanuts","weight":42,"value":70},{"name":"seed","weight":11,"value":70},{"name":"rope","weight":27,"value":60},{"name":"knife","weight":15,"value":60},{"name":"spam","weight":50,"value":160},{"name":"water","weight":153,"value":200},{"name":"tuna","weight":13,"value":35}]}"
+
+
+PROMPT
+================================
+
 You are a survior of zombie apocalypse. You are moving from town-to-town collecting the most valuable items necessary for survival. You have a backpack that can only hold a certain amount of weight and it is your job is to choose the best set of items based on their weight and value.
 
 Write a API in Grape with an API endpoint called /v1/survival-pack.
