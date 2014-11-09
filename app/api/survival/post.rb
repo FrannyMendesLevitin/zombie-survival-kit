@@ -3,7 +3,6 @@ module Survival
     format :json
     desc 'Creates a pack from available objects.'
   	KnapsackItem = Struct.new(:name, :weight, :value)
-
     resource :pack do
       post do
       	data_hash = JSON.parse(params.to_json)
@@ -17,13 +16,9 @@ module Survival
 				available_knapsack_items << KnapsackItem.new(item["name"], item["weight"].to_i, item["value"].to_i)
 			end
 		end
-
 		answer = best_bag max_weight, available_knapsack_items
 		answer.to_json
-
       end
     end
-
   end
-
 end
