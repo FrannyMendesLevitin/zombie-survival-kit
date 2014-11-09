@@ -1,3 +1,6 @@
+HOW TO USE
+==================
+
 Survival-Pack is a service designed to take information regarding which items are available, and returns the items which maximize your chances of surviving a zombie apocolypse. 
 
 There are two ways to use the app. 
