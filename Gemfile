@@ -19,3 +19,4 @@ group :development, :test do
 end
 gem 'rename'
 gem 'json'
+gem 'angularjs-rails'
