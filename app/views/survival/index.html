@@ -1,0 +1,33 @@
+<div class="container" ng-app="SurvivalApp">
+	<div ng-controller="survivalController as survivalKit">
+
+		<div class="col-xs-6">
+			<p>Your best pack:</p>
+			<ul> 
+		       <li ng-repeat="item in survivalKit.selectedItems">{{ item.name }}</li>
+		    </ul>  
+		</div>
+
+		<div class="col-xs-6">
+			<input type="text" placeholder="Your weight limit" ng-model="weightLimit" ng-change="change()">
+			<table class="table table-striped" >  
+		        <thead>  
+		          <tr>  
+		            <th>Available?</th>
+		            <th>Item Name</th>  
+		            <th>Item Weight (Max is {{ survivalKit.maxWeight }})</th>  
+		            <th>Item Value</th>  
+		          </tr>  
+		        </thead>  
+		        <tbody>
+		          <tr ng-repeat="item in survivalKit.availableItems">  
+		          	<td><input class="checkbox" type="checkbox" ng-model="checkbox" ng-change="change()"></td>
+		            <td ng-model="selected">{{ item.name }}</td>  
+		            <td>{{ item.weight }}</td>  
+		            <td>{{ item.value }}</td>  
+		          </tr>
+		        </tbody>  
+		    </table>  
+		</div>
+	</div>
+</div>
