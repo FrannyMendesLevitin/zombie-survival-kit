@@ -5,7 +5,7 @@ Survival-Pack is a service designed to take information regarding which items ar
 
 There are two ways to use the app. 
 
-The first is via an AngularJS front end, found at [link](http://zombie-survival-kit.herokuapp.com/). Simply check the boxes of the items that are available, and a list of the optimal choices will pop up on the left. 
+The first is via an AngularJS front end, found at this [link](http://zombie-survival-kit.herokuapp.com/). Simply check the boxes of the items that are available, and a list of the optimal choices will pop up on the left. 
 
 The second option is to directly submit json data to the api endpoint /v1/survival-pack/pack via an HTTP POST request. The api will return json with information regarding the best pack of items.
 
