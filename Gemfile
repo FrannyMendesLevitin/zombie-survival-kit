@@ -20,3 +20,4 @@ end
 gem 'rename'
 gem 'json'
 gem 'angularjs-rails'
+gem 'rails_12factor', group: :production
