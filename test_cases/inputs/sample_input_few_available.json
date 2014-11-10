@@ -1,0 +1,7 @@
+{ 
+"maxWeight": 400,
+
+"availableItems": [
+	{"name": "ammo", "weight": 9, "value": 150}
+	]
+}

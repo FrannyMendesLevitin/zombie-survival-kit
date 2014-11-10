@@ -8,6 +8,9 @@ module Survival
       	data_hash = JSON.parse(params.to_json)
 		max_weight = data_hash["maxWeight"].to_i
 		available_items = data_hash["availableItems"]
+		unless available_items.kind_of?(Array)
+			return
+		end
 		available_knapsack_items = []
 		available_items.each do |item, value|
 			if value 

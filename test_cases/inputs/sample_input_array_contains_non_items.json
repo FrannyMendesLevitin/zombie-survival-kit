@@ -1,0 +1,9 @@
+{ 
+"maxWeight": 400,
+
+"availableItems": [
+	"Hello",
+	"World"
+	]
+
+}
