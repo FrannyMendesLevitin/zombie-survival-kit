@@ -18,37 +18,43 @@ module Grape
 		result = {"selectedItems" => []}
 		maxval = 0
 		solutions = []
-		 
-		all_possible_bags(items) do |subset|
-		  weight = subset.inject(0) {|w, elem| w += elem.weight}
-		  next if weight > max_weight
-		 
-		  value = subset.inject(0) {|v, elem| v += elem.value}
-		  if value == maxval
-		    solutions << subset
-		  elsif value > maxval
-		    maxval = value
-		    solutions = [subset]
-		  end
+		bags = all_possible_bags(items)
+
+		bags.each do |possibile_bag|
+			value = 0
+			weight = 0
+			possibile_bag.each do |bag|
+				bag.flatten!
+				bag.each do |item|
+					weight += item.weight
+					value += item.value
+				end
+			end
+			next if weight > max_weight
+
+			if value == maxval
+				solutions << possibile_bag
+			elsif value > maxval
+				maxval = value
+				solutions = possibile_bag
+			end
 		end
-		 
 		solutions.each do |set|
-		  set.each {|item| result["selectedItems"] << {"name" => item.name, "weight" => item.weight, "value" => item.value}
-		}
+			set.each {|item| result["selectedItems"] << {"name" => item.name, "weight" => item.weight, "value" => item.value}}
 		end
+		result
 	end
 
 	def all_possible_bags items
-	    result = [[]]
+	    result = []
 	    possibilities = []
 	    items.each do |item|
-	   		result.each do |res|
-	  			possibilities = [res+[item]]
-	  		end
-	  		result << possibilities
-	  	end
-	    return result
+	        result.each do |res|
+	            possibilities = [res+[item]]
+	        end
+	        result << possibilities
+	    end
+	    result
 	end
-
   end
 end
