@@ -5,7 +5,7 @@ Survival-Pack is a service designed to take information regarding which items ar
 
 There are two ways to use the app. 
 
-The first is via an AngularJS front end, found at [link](link). Simply check the boxes of the items that are available, and a list of the optimal choices will pop up on the left. 
+The first is via an AngularJS front end, found at [link](http://zombie-survival-kit.herokuapp.com/). Simply check the boxes of the items that are available, and a list of the optimal choices will pop up on the left. 
 
 The second option is to directly submit json data to the api endpoint /v1/survival-pack/pack via an HTTP POST request. The api will return json with information regarding the best pack of items.
 
@@ -44,7 +44,22 @@ An example http request (via jquery) might look like this:
 
 This HTTP request would return json data that looks like this:
 
-    "{"selectedItems":[{"name":"beans","weight":4,"value":50},{"name":"popcorn","weight":7,"value":20},{"name":"wire","weight":22,"value":80},{"name":"almonds","weight":43,"value":75},{"name":"peanuts","weight":42,"value":70},{"name":"seed","weight":11,"value":70},{"name":"rope","weight":27,"value":60},{"name":"knife","weight":15,"value":60},{"name":"spam","weight":50,"value":160},{"name":"water","weight":153,"value":200},{"name":"tuna","weight":13,"value":35}]}"
+    {
+	"selectedItems":[
+		{"name":"ammo","weight":9,"value":150},
+		{"name":"tuna","weight":13,"value":35},
+		{"name":"water","weight":153,"value":200},
+		{"name":"spam","weight":50,"value":160},
+		{"name":"knife","weight":15,"value":60},
+		{"name":"rope","weight":27,"value":60},
+		{"name":"seed","weight":11,"value":70},
+		{"name":"peanuts","weight":42,"value":70},
+		{"name":"almonds","weight":43,"value":75},
+		{"name":"wire","weight":22,"value":80},
+		{"name":"popcorn","weight":7,"value":20},
+		{"name":"beans","weight":4,"value":50}
+		]
+	}
 
 
 PROMPT
