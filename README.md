@@ -38,7 +38,6 @@ An example http request (via jquery) might look like this:
 			{"name": "beans", "weight": 4, "value": 50},
 			{"name": "laptop", "weight": 30, "value": 10}
 			]
-
 		}
     $.post("http://localhost:3000/v1/survival-pack/pack", JSON.parse(json))
 
