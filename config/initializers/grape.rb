@@ -6,43 +6,38 @@ module Grape
       @url_helper ||= ::API::RoutingHelper.new(self)
     end
 
+	#
+	# To get the best knapsack, we want to maximize the value (sum of item values), 
+	# subject to a weight constraint (the sum of the weights must be less than some maximum)
+	# 
+	# A decision matrix representing each item will have a 1 in a cell if the item will be taken, 
+	# and a 0 if it will be left behind
+	#
+
 	def best_bag max_weight, items
 		result = {"selectedItems" => []}
-
-		# optimize for case where all items can be carried
-		total_weight = 0
-		items.each do |item|
-			total_weight += item.weight
+		maxval = 0
+		solutions = []
+		 
+		all_possible_bags(items) do |subset|
+		  weight = subset.inject(0) {|w, elem| w += elem.weight}
+		  next if weight > max_weight
+		 
+		  value = subset.inject(0) {|v, elem| v += elem.value}
+		  if value == maxval
+		    solutions << subset
+		  elsif value > maxval
+		    maxval = value
+		    solutions = [subset]
+		  end
 		end
-		if total_weight <= max_weight
-			items.each do |item|
-				result["selectedItems"] << {"name" => item.name, "weight" => item.weight, "value" => item.value}
-			end
-			return result
+		 
+		solutions.each do |set|
+		  set.each {|item| result["selectedItems"] << {"name" => item.name, "weight" => item.weight, "value" => item.value}
+		}
 		end
-
-		# Otherwise, do it the long way
-		best_weight = 0
-		best_value = 0
-		all_possible_bags(items).each do |possibilities|
-			possibility_weight = 0
-			possibility_value = 0
-			started = false
-			possibilities.each do |possibility|
-				next unless started
-				started = true;
-				possibility.each { |weight| possibility_weight += weight[1].weight || 0 }
-				possibility.each { |value| possibility_value += value[2].value || 0 }
-				if possibility_value > best_value and possibility_weight <= max_weight
-					best_value = possibility_value
-					best_weight = possibility_weight
-					result["selectedItems"] = possibilities
-				end
-			end
-		end
-		result
 	end
-	
+
 	def all_possible_bags items
 	    result = [[]]
 	    possibilities = []
