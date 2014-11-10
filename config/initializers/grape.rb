@@ -22,14 +22,13 @@ module Grape
 				value += item.value 
 			end
 			next if weight > max_weight
-			if value == maxval
-				solutions << possibile_bag
-			elsif value > maxval
+			if value >= maxval
 				maxval = value
 				solutions = possibile_bag
 			end
 		end
 		solutions.each do |item|
+			puts item.inspect
 			result["selectedItems"] << {"name" => item.name, "weight" => item.weight, "value" => item.value}
 		end
 		result
