@@ -61,6 +61,8 @@ This HTTP request would return json data that looks like this:
 		]
 	}
 
+Some test cases (such as the one given above), are available to be run automatically via rspec. To run those tests, clone this repo and type `rspec spec` from the project directory.
+
 
 PROMPT
 ================================
