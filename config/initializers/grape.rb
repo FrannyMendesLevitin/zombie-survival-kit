@@ -6,46 +6,45 @@ module Grape
       @url_helper ||= ::API::RoutingHelper.new(self)
     end
 
-    # Using brute force solution because my dynamic programming attempt was buggy. Might rewrite more scalable version later.
+    # Dynamic Programming solution
 	def best_bag max_weight, items
-		result = {"selectedItems" => []}
-		maxval = 0
-		solutions = []
-		bags = all_possible_bags(items)
+	    result = {"selectedItems" => []}
+	    value_matrix = fill_matrix_with_zeros(items.length+1, max_weight)
+	    decision_matrix = fill_matrix_with_zeros(items.length+1, max_weight)  
 
-		bags.each do |possibile_bag|
-			next if possibile_bag == []
-			value = 0
-			weight = 0
-			possibile_bag.each do |item|
-				weight += item.weight 
-				value += item.value 
-			end
-			next if weight > max_weight
-			if value >= maxval
-				maxval = value
-				solutions = possibile_bag
-			end
-		end
-		solutions.each do |item|
-			puts item.inspect
-			result["selectedItems"] << {"name" => item.name, "weight" => item.weight, "value" => item.value}
-		end
-		result
+	    for i in 1..items.length
+	        for j in 1..max_weight
+	            array_j = j - 1
+	            if (j > items[i-1].weight)
+	                value_matrix[i][array_j] = [value_matrix[i-1][array_j], (items[i-1].value + value_matrix[i-1][(j - items[i-1].weight)-1])].max
+	                if ((items[i-1].value + value_matrix[i-1][(j - items[i-1].weight)-1]) > value_matrix[i-1][array_j])
+	                    decision_matrix[i][array_j] = 1
+	                end
+	            elsif (j == items[i-1].weight)
+	                value_matrix[i][array_j] = items[i-1].value
+	                decision_matrix[i][array_j] = 1
+	            else
+	                value_matrix[i][array_j] = value_matrix[i-1][array_j]
+	            end
+	        end
+	    end
+
+	    w = max_weight
+	    i = items.length
+	    while w>=0 and i<=items.length and i>0 
+	        if (decision_matrix[i][w-1]==1)
+	            result["selectedItems"] << {"name" => items[i - 1].name, "weight" => items[i - 1].weight, "value" => items[i - 1].value}
+	            w -= items[i - 1].weight
+	            i -= 1
+	        else
+	            i -= 1 
+	        end
+	    end
+	    result
 	end
-
-	# Adapted from Powerset code found on StackOverflow
-	def all_possible_bags items
-		yield [] if block_given?
-		items.inject([[]]) do |ps, elem|
-			r = []
-			ps.each do |i|
-				r << i
-				new_subset = i + [elem]
-				yield new_subset if block_given?
-				r << new_subset
-			end
-			r
+	def fill_matrix_with_zeros rows, cols
+		Array.new(rows) do |row|
+			Array.new(cols, 0)
 		end
 	end
 
