@@ -1,0 +1,28 @@
+{ 
+"maxWeight": 40.5,
+
+"availableItems": [
+	{"name": "ammo", "weight": 9.23, "value": 150.12},
+	{"name": "tuna", "weight": 13.12, "value": 35.12},
+	{"name": "water", "weight": 153.11, "value": 200.43},
+	{"name": "spam", "weight": 50.12, "value": 160.12},
+	{"name": "knife", "weight": 15.12, "value": 60.12},
+	{"name": "hammer", "weight": 68.12, "value": 45.12},
+	{"name": "rope", "weight": 27.12, "value": 60.12},
+	{"name": "saw", "weight": 39.12, "value": 40.12},
+	{"name": "towel", "weight": 23.12, "value": 30.12},
+	{"name": "rock", "weight": 52.12, "value": 10.12},
+	{"name": "seed", "weight": 11.12, "value": 70.12},
+	{"name": "blanket", "weight": 32.12, "value": 30.12},
+	{"name": "skewer", "weight": 24.12, "value": 15.12},
+	{"name": "dull-sword", "weight": 48.12, "value": 10.12},
+	{"name": "oil", "weight": 73.12, "value": 40.12},
+	{"name": "peanuts", "weight": 42.12, "value": 70.12},
+	{"name": "almonds", "weight": 43.12, "value": 75.12},
+	{"name": "wire", "weight": 22.12, "value": 80.12},
+	{"name": "popcorn", "weight": 7.12, "value": 20.12},
+	{"name": "rabbit", "weight": 18.12, "value": 12.12},
+	{"name": "beans", "weight": 4.12, "value": 50.12},
+	{"name": "laptop", "weight": 30.12, "value": 10.12}
+	]
+}
