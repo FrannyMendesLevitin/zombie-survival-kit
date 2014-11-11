@@ -93,47 +93,47 @@ Make your solution available on GitHub or similar service
 
 Input:
 
-max weight: 400
-
-name    weight value
-ammo        9   150
-tuna       13    35
-water     153   200
-spam       50   160
-knife      15    60
-hammer     68    45
-rope       27    60
-saw        39    40
-towel      23    30
-rock       52    10
-seed       11    70
-blanket    32    30
-skewer     24    15
-dull-sword 48    10
-oil        73    40
-peanuts    42    70
-almonds    43    75
-wire       22    80
-popcorn     7    20
-rabbit     18    12
-beans       4    50
-laptop     30    10
+	max weight: 400
+	
+	name    weight value
+	ammo        9   150
+	tuna       13    35
+	water     153   200
+	spam       50   160
+	knife      15    60
+	hammer     68    45
+	rope       27    60
+	saw        39    40
+	towel      23    30
+	rock       52    10
+	seed       11    70
+	blanket    32    30
+	skewer     24    15
+	dull-sword 48    10
+	oil        73    40
+	peanuts    42    70
+	almonds    43    75
+	wire       22    80
+	popcorn     7    20
+	rabbit     18    12
+	beans       4    50
+	laptop     30    10
 
 Result:
 
-name    weight value
-beans       4    50
-popcorn     7    20
-wire       22    80
-almonds    43    75
-peanuts    42    70
-seed       11    70
-rope       27    60
-knife      15    60
-spam       50   160
-water     153   200
-tuna       13    35
-ammo        9   150
+	name    weight value
+	beans       4    50
+	popcorn     7    20
+	wire       22    80
+	almonds    43    75
+	peanuts    42    70
+	seed       11    70
+	rope       27    60
+	knife      15    60
+	spam       50   160
+	water     153   200
+	tuna       13    35
+	ammo        9   150
 
 Hint:
 
